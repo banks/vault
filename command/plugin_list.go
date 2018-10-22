@@ -30,7 +30,7 @@ Usage: vault plugin list [options] TYPE
   plugins are in use, but rather just their availability. The last argument of
   type takes "auth", "database", or "secret".
 
-  List all available plugins in the catalog:
+  List all available database plugins in the catalog:
 
       $ vault plugin list database
 
