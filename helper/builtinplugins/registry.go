@@ -72,7 +72,7 @@ func newRegistry() *registry {
 			"userpass":   credUserpass.Factory,
 		},
 		databasePlugins: map[string]func() (interface{}, error){
-			// These four databasePlugins all use the same mysql implementation but with
+			// These four plugins all use the same mysql implementation but with
 			// different username settings passed by the constructor.
 			"mysql-database-plugin":        dbMysql.New(dbMysql.MetadataLen, dbMysql.MetadataLen, dbMysql.UsernameLen),
 			"mysql-aurora-database-plugin": dbMysql.New(credsutil.NoneLength, dbMysql.LegacyMetadataLen, dbMysql.LegacyUsernameLen),
@@ -115,7 +115,7 @@ type registry struct {
 }
 
 // Get returns the BuiltinFactory func for a particular backend plugin
-// from the databasePlugins map.
+// from the plugins map.
 func (r *registry) Get(name string, pluginType consts.PluginType) (func() (interface{}, error), bool) {
 	switch pluginType {
 	case consts.PluginTypeCredential:
@@ -132,7 +132,7 @@ func (r *registry) Get(name string, pluginType consts.PluginType) (func() (inter
 	}
 }
 
-// Keys returns the list of plugin names that are considered builtin databasePlugins.
+// Keys returns the list of plugin names that are considered builtin plugins.
 func (r *registry) Keys(pluginType consts.PluginType) []string {
 	var keys []string
 	switch pluginType {
