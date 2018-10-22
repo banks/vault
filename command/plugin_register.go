@@ -27,14 +27,15 @@ func (c *PluginRegisterCommand) Synopsis() string {
 
 func (c *PluginRegisterCommand) Help() string {
 	helpText := `
-Usage: vault plugin register [options] NAME
+Usage: vault plugin register [options] NAME TYPE
 
   Registers a new plugin in the catalog. The plugin binary must exist in Vault's
-  configured plugin directory.
+  configured plugin directory. The last argument of type takes "auth", "database",
+  or "secret".
 
   Register the plugin named my-custom-plugin:
 
-      $ vault plugin register -sha256=d3f0a8b... my-custom-plugin
+      $ vault plugin register -sha256=d3f0a8b... my-custom-plugin auth
 
   Register a plugin with custom arguments:
 

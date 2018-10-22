@@ -23,14 +23,15 @@ func (c *PluginInfoCommand) Synopsis() string {
 
 func (c *PluginInfoCommand) Help() string {
 	helpText := `
-Usage: vault plugin info [options] NAME
+Usage: vault plugin info [options] NAME TYPE
 
   Displays information about a plugin in the catalog with the given name. If
-  the plugin does not exist, an error is returned.
+  the plugin does not exist, an error is returned. The last argument of type
+  takes "auth", "database", or "secret".
 
   Get info about a plugin:
 
-      $ vault plugin info mysql-database-plugin
+      $ vault plugin info mysql-database-plugin database
 
 ` + c.Flags().Help()
 

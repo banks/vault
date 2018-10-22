@@ -24,14 +24,15 @@ func (c *PluginListCommand) Synopsis() string {
 
 func (c *PluginListCommand) Help() string {
 	helpText := `
-Usage: vault plugin list [options]
+Usage: vault plugin list [options] TYPE
 
   Lists available plugins registered in the catalog. This does not list whether
-  plugins are in use, but rather just their availability.
+  plugins are in use, but rather just their availability. The last argument of
+  type takes "auth", "database", or "secret".
 
   List all available plugins in the catalog:
 
-      $ vault plugin list
+      $ vault plugin list database
 
 ` + c.Flags().Help()
 
